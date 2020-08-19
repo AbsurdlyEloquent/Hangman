@@ -38,11 +38,19 @@ function handler(e) {
       console.log(wordP.innerText)
       wordP.innerText = replaceAt(wordP.innerText, i, wordArr[i])
     } else {
-      return false
+      result = false
     }
   });
 }
 
+//function to check the list of previous guesses
+function checkLetters(value) {
+  if (!function() {for (let i = 0; i < letters.innerText.length; i++) {
+    return letters.innerText[i] === value.toUpperCase
+    }}) {
+      return false
+  }
+}
 // utility function to change strings, this is used a lot
 replaceAt = function(str, index, replacement) {
     return str.substr(0, index) + replacement + str.substr(index + replacement.length);
