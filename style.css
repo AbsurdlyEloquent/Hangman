@@ -1,0 +1,10 @@
+main {
+  display: flex;
+  justify-content: center;
+} .content {
+  display: flex;
+  flex-direction: column;
+} form {
+  display: flex;
+  flex-direction: column;
+}
