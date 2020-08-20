@@ -9,7 +9,7 @@ let data = []
 let query = prompt('Enter a theme word')
 fetchWords()
 function fetchWords() {
-  fetch(`https://api.datamuse.com/words?ml=${query}&max=1`)
+  fetch(`https://api.datamuse.com/words?ml=${query}&max=4`)
     .then(response => response.json())
     .then(raw => {
       console.log(raw)
@@ -33,14 +33,18 @@ function splitStr() {
 form.addEventListener('submit', handler)
 function handler(e) {
   e.preventDefault()
-  wordArr.forEach((item, i) => {
-    if (wordArr[i] === e.target[0].value.toLowerCase()) {
-      console.log(wordP.innerText)
-      wordP.innerText = replaceAt(wordP.innerText, i, wordArr[i])
-    } else {
-      result = false
-    }
-  });
+  // if the letter isn't in the letters array
+  if (checkLetters(e.target[0].value)) {
+    wordArr.forEach((item, i) => {
+      if (wordArr[i] === e.target[0].value.toLowerCase()) {
+        console.log(wordP.innerText)
+        wordP.innerText = replaceAt(wordP.innerText, i, wordArr[i])
+    //    var replace = true
+      }
+    });
+  } if (checkLetters(e.target[0].value) && replace === true) {
+    letters.innerText += e.target[0].value
+  }
 }
 
 //function to check the list of previous guesses
@@ -48,10 +52,10 @@ function checkLetters(value) {
   if (!function() {for (let i = 0; i < letters.innerText.length; i++) {
     return letters.innerText[i] === value.toUpperCase
     }}) {
-      return false
+      return true
   }
 }
-// utility function to change strings, this is used a lot
+// utility function to change strings at a specific index, this is used a lot
 replaceAt = function(str, index, replacement) {
     return str.substr(0, index) + replacement + str.substr(index + replacement.length);
 }
