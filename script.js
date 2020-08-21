@@ -4,6 +4,7 @@ let form = document.querySelector('form')
 let theme = document.querySelector('#theme')
 let wordArr = []
 let data = []
+let score = 0
 
 //Random word fetched from api
 let query = prompt('Enter a theme word')
@@ -30,13 +31,14 @@ function splitStr() {
 }
 
 //adds event listener to the form
+let replace = false
+//this doesn't work if its not a global variable
 form.addEventListener('submit', handler)
 function handler(e) {
-  let replace = false
   e.preventDefault()
   // if the letter isn't in the letters array
   if (checkLetters(e.target[0].value)) {
-    // error 
+    // error function
   } else {
     wordArr.forEach((item, i) => {
       if (wordArr[i] === e.target[0].value.toLowerCase()) {
@@ -45,9 +47,16 @@ function handler(e) {
         replace = true
       }
     });
+      checkWord()
+      if (!replace) {
+      letters.innerText += e.target[0].value
+      score++
+      }
     }
+    e.target[0].value = ""
+    replace = false
+    checkScore()
   }
-}
 
 //function to check the list of previous guesses
 function checkLetters(value) {
