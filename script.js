@@ -13,7 +13,13 @@ let wordArr = []
 let data = null
 let score = 0
 
-// Event listener to fetch word
+// ######## ######## ########  ######  ##     ##
+// ##       ##          ##    ##    ## ##     ##
+// ##       ##          ##    ##       ##     ##
+// ######   ######      ##    ##       #########
+// ##       ##          ##    ##       ##     ##
+// ##       ##          ##    ##    ## ##     ##
+// ##       ########    ##     ######  ##     ##
 startBtn.addEventListener('click', ()=>{
   fetchWords(document.querySelector("#query").value)
 })
@@ -38,6 +44,13 @@ function splitStr(query) {
   theme.innerText = theme.innerText + " " + query
 }
 
+//  ######  ##     ## ########  ##     ## #### ########
+// ##    ## ##     ## ##     ## ###   ###  ##     ##
+// ##       ##     ## ##     ## #### ####  ##     ##
+//  ######  ##     ## ########  ## ### ##  ##     ##
+//       ## ##     ## ##     ## ##     ##  ##     ##
+// ##    ## ##     ## ##     ## ##     ##  ##     ##
+//  ######   #######  ########  ##     ## ####    ##
 //adds event listener to the form
 let replace = false
 //this doesn't work if its not a global variable
@@ -69,6 +82,13 @@ function handler(e) {
   checkWord()
 }
 
+// ##     ## ######## #### ##       #### ######## ##    ##
+// ##     ##    ##     ##  ##        ##     ##     ##  ##
+// ##     ##    ##     ##  ##        ##     ##      ####
+// ##     ##    ##     ##  ##        ##     ##       ##
+// ##     ##    ##     ##  ##        ##     ##       ##
+// ##     ##    ##     ##  ##        ##     ##       ##
+//  #######     ##    #### ######## ####    ##       ##
 
 function checkWord() {
   if (wordP.innerText === data[0].word.toUpperCase()) {
