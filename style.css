@@ -24,4 +24,7 @@ body {
   }.modal {
   position: relative;
   margin: auto;
+} #badGuess {
+  display: none;
+  color: red;
 }
