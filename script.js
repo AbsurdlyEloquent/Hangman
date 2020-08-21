@@ -14,26 +14,28 @@ let data = null
 let score = 0
 
 // Event listener to fetch word
-startBtn.addEventListener('click', fetchWords, document.querySelector("#query"))
+startBtn.addEventListener('click', ()=>{
+  fetchWords(document.querySelector("#query").value)
+})
 //Random word fetched from api
 function fetchWords(query) {
   startModal.style.display = 'none'
-  fetch(`https://api.datamuse.com/words?ml=${query.value}&max=1`)
+  fetch(`https://api.datamuse.com/words?ml=${query}&max=1`)
     .then(response => response.json())
     .then(raw => {
       if (raw.length > 0) {
         data = raw
-        splitStr()
+        splitStr(query)
     } else {
         fetchWords(prompt("That word returned no results!"))
     }})
     .catch(err => console.error(err));
 }
 //splits the word into an array and displays hidden characters
-function splitStr() {
+function splitStr(query) {
   wordArr = data[0].word.toUpperCase().split("")
   wordP.innerText = "_".repeat(wordArr.length)
-  theme.innerText = theme.innerText + " " + query.value
+  theme.innerText = theme.innerText + " " + query
 }
 
 //adds event listener to the form
