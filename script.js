@@ -68,6 +68,12 @@ function checkLetters(value) {
     return true
   }
 }
+
+function checkWord() {
+  if (wordP.innerText === data[0]) {
+    winModal.style.display = "block"
+  }
+}
 // utility function to change strings at a specific index, this is used a lot
 replaceAt = function(str, index, replacement) {
     return str.substr(0, index) + replacement + str.substr(index + replacement.length);
