@@ -58,12 +58,8 @@ function handler(e) {
       }
     });
     if (!replace) {
-      if (checkLetters(e.target[0].value)) {
-        letters.innerText += e.target[0].value
-        score++
-      } else {
-        retryLabel.style.display = "inline"
-      }
+      letters.innerText += e.target[0].value
+      score++
     }
   }
   e.target[0].value = ""
@@ -74,12 +70,12 @@ function handler(e) {
 //function to check the list of previous guesses
 function checkLetters(value) {
   //if none of the letters in the string match, it returns false
+  let notContain = true
   for (let i = 0; i < letters.innerText.length; i++) {
     if (letters.innerText[i] === value) {
       return false
-    } else {
-      return true
     }
+    return notContain
   }
 }
 
