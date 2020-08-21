@@ -45,9 +45,7 @@ function handler(e) {
   e.preventDefault()
   retryLabel.style.display = 'none'
   // if the letter isn't in the letters array
-  if (checkLetters(e.target[0].value)) {
-    retryLabel.style.display="inline"
-  } else {
+  if (!checkLetters(e.target[0].value)) {
     //search for the letter in the array
     wordArr.forEach((item, i) => {
       if (wordArr[i] === e.target[0].value.toLowerCase()) {
@@ -61,6 +59,8 @@ function handler(e) {
       letters.innerText += e.target[0].value
       score++
     }
+  } else {
+    retryLabel.style.display="inline"
   }
   e.target[0].value = ""
   replace = false
@@ -70,14 +70,14 @@ function handler(e) {
 //function to check the list of previous guesses
 function checkLetters(value) {
   //if none of the letters in the string match, it returns false
-  let noContain = true
+  let contains = false
   letters.innerText.split('').forEach((item, index)=>{
     if (item === value) {
-      noContain = false
-      break;
+      noContain = true
+      return true
     }
   })
-  return noContain
+  return contains
 }
 
 function checkWord() {
