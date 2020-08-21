@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Hangman</title>
 
-  </head>
-  <body>
-    <h1>Hangman</h1>
-    <main>
-      <aside class="img">
-        <img src="./assets/img0.png" alt="">
-      </aside>
-      <aside class="content">
-        <p id="word"></p>
-        <p id="theme">Words related to:</p>
-        <p>Guess a letter:</p>
-        <form action="index.html" method="post">
-          <input id="guess" type="text" name="" value="">
-          <label for="guess" id="badGuess">That letter was already tried</label>
-          <input id="submit" type="submit" name="" value="Go">
-        </form>
-        <p id="letters"></p>
-      </aside>
-    </main>
-    <div class="wrapper" id="start">
-      <div id="startModal" class="modal">
-        <input type="text" id="query" placeholder="Enter a theme word!">
-        <button type="button" id="startBtn">Start</button>
-      </div>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Hangman</title>
+
+</head>
+
+<body>
+  <h1>Hangman</h1>
+  <h3>It's actually a pretty horrifying game but don't think about it</h3>
+  <main>
+    <aside class="img">
+      <img src="./assets/img0.png" alt="">
+    </aside>
+    <aside class="content">
+      <p id="word"></p>
+      <p id="theme">Words related to:</p>
+      <p>Guess a letter:</p>
+      <form action="index.html" method="post">
+        <input id="guess" type="text" name="" value="">
+        <label for="guess" id="badGuess">That letter was already tried</label>
+        <input id="submit" type="submit" name="" value="Go">
+      </form>
+      <p id="letters"></p>
+    </aside>
+  </main>
+  <div class="wrapper" id="start">
+    <div id="startModal" class="modal">
+      <input type="text" id="query" placeholder="Enter a theme word!">
+      <button type="button" id="startBtn">Start</button>
     </div>
-    <div class="wrapper" id="winModal">
-      <div class="modal">
-        <h3>You win!</h3>
-        <button type="button" id="winBtn" onclick="window.location.href=window.location.href">Play Again?</button>
-      </div>
+  </div>
+  <div class="wrapper" id="winModal">
+    <div class="modal">
+      <h3>You win!</h3>
+      <button type="button" id="winBtn" onclick="window.location.href=window.location.href">Play Again?</button>
     </div>
-    <div class="wrapper" id="loseModal">
-      <div class="modal">
-        <h3>You lose!<br>The word was</h3>
-        <button type="button" id="loseBtn" onclick="window.location.href=window.location.href">Play Again?</button>
-      </div>
+  </div>
+  <div class="wrapper" id="loseModal">
+    <div class="modal">
+      <h3>You lose!<br>The word was</h3>
+      <button type="button" id="loseBtn" onclick="window.location.href=window.location.href">Play Again?</button>
     </div>
-    <script src="script.js" charset=" utf-8" ="utf-8" "></script>
+  </div>
+  <script src="script.js" charset=" utf-8"="utf-8" "></script>
   </body>
 </html>

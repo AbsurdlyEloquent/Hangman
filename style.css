@@ -9,6 +9,8 @@ body {
   color: white;
 } h1 {
   text-align: center;
+} h3 {
+  text-align: center;
 } main {
   display: flex;
   justify-content: center;
@@ -58,7 +60,7 @@ body {
   display: none;
   color: #E76F51;
 } img {
-  height: 90vh;
+  height: 85vh;
   width: auto;
   /*This is weird, but I didn't want to draw the image again*/
   filter: invert(99%) sepia(1%) saturate(3%) hue-rotate(349deg) brightness(103%) contrast(100%);
