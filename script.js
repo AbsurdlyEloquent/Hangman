@@ -50,7 +50,6 @@ function handler(e) {
     //search for the letter in the array
     wordArr.forEach((item, i) => {
       if (wordArr[i] === e.target[0].value.toUpperCase()) {
-        console.log(wordP.innerText)
         wordP.innerText = replaceAt(wordP.innerText, i, wordArr[i])
         //the letter has been replaced at the specified index
         replace = true
