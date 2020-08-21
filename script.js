@@ -1,5 +1,6 @@
 let wordP = document.querySelector('#word')
-let letters = document.getElementById('letters')
+let lettersP = document.getElementById('letters')
+let letters = []
 let form = document.querySelector('form')
 let theme = document.querySelector('#theme')
 let img = document.querySelector('img')
@@ -45,7 +46,7 @@ function handler(e) {
   e.preventDefault()
   retryLabel.style.display = 'none'
   // if the letter isn't in the letters array
-  if (!checkLetters(e.target[0].value)) {
+  if (!letters.includes(e.target[0].value.toUpperCase())) {
     //search for the letter in the array
     wordArr.forEach((item, i) => {
       if (wordArr[i] === e.target[0].value.toLowerCase()) {
@@ -56,7 +57,8 @@ function handler(e) {
       }
     });
     if (!replace) {
-      letters.innerText += e.target[0].value
+      letters.push(e.target[0].value.toUpperCase())
+      lettersP.innerText = letters
       score++
     }
   } else {
@@ -67,18 +69,6 @@ function handler(e) {
   checkScore()
 }
 
-//function to check the list of previous guesses
-function checkLetters(value) {
-  //if none of the letters in the string match, it returns false
-  let contains = false
-  letters.innerText.split('').forEach((item, index)=>{
-    if (item === value) {
-      noContain = true
-      return true
-    }
-  })
-  return contains
-}
 
 function checkWord() {
   if (wordP.innerText === data[0].word) {
