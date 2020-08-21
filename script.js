@@ -1,5 +1,5 @@
 let wordP = document.querySelector('#word')
-let letters = document.querySelector('#letters')
+let letters = document.getElementById('letters')
 let form = document.querySelector('form')
 let theme = document.querySelector('#theme')
 let img = document.querySelector('img')
@@ -58,11 +58,11 @@ function handler(e) {
       }
     });
     if (!replace) {
-      letters.innerText += e.target[0].value
-      score++
-      retryLabel.style.display = "inline"
-    } else {
-
+      if (!checkLetters(e.target[0].value)) {
+        letters.innerText += e.target[0].value
+        score++
+        retryLabel.style.display = "inline"
+      }
     }
   }
   e.target[0].value = ""
