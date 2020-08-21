@@ -73,6 +73,10 @@ function handler(e) {
 function checkWord() {
   if (wordP.innerText === data[0].word.toUpperCase()) {
     winModal.style.display = "flex"
+    form.removeEventListener('submit', handler)
+    form.addEventListener('submit', function(e) {
+      e.preventDefault()
+    })
   }
 }
 
@@ -81,6 +85,10 @@ function checkScore() {
   if (score >= 6) {
     loseModal.style.display = "flex"
     loseModal.children[0].children[0].innerText += ` ${data[0].word}`
+    form.removeEventListener('submit', handler)
+    form.addEventListener('submit', function(e) {
+      e.preventDefault()
+    })
   }
 }
 // utility function to change strings at a specific index, this is used a lot
