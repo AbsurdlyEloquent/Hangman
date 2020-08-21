@@ -80,6 +80,7 @@ function checkScore() {
   img.src = `./assets/img${score}.png`
   if (score >= 6) {
     loseModal.style.display = "flex"
+    loseModal.children[0].children[0].innerText += ` ${data[0].word}`
   }
 }
 // utility function to change strings at a specific index, this is used a lot

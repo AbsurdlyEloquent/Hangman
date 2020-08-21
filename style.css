@@ -47,6 +47,7 @@ body {
   background-color: #2a9d8f;
   border: 2px solid black;
   font-size: 20px;
+  text-align: center;
 } .modal input {
   border-radius: 10%;
   font-size: 20px;
