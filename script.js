@@ -43,19 +43,21 @@ let replace = false
 form.addEventListener('submit', handler)
 function handler(e) {
   e.preventDefault()
-  retryLabel.display = 'none'
+  retryLabel.style.display = 'none'
   // if the letter isn't in the letters array
   if (checkLetters(e.target[0].value)) {
     retryLabel.style.display="inline"
   } else {
+    //search for the letter in the array
     wordArr.forEach((item, i) => {
       if (wordArr[i] === e.target[0].value.toLowerCase()) {
         console.log(wordP.innerText)
         wordP.innerText = replaceAt(wordP.innerText, i, wordArr[i])
+        //the letter has been replaced at the specified index
         replace = true
       }
     });
-    if (checkLetters(e.target[0].value)) {
+    if (!replace) {
       letters.innerText += e.target[0].value
       score++
       retryLabel.style.display = "inline"
@@ -70,6 +72,7 @@ function handler(e) {
 
 //function to check the list of previous guesses
 function checkLetters(value) {
+  //if none of the letters in the string match, it returns false
   if (function() {for (let i = 0; i < letters.innerText.length; i++) {
       return letters.innerText[i] === value.toUpperCase
     }}) {
