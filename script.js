@@ -32,31 +32,31 @@ function splitStr() {
 //adds event listener to the form
 form.addEventListener('submit', handler)
 function handler(e) {
+  let replace = false
   e.preventDefault()
   // if the letter isn't in the letters array
   if (checkLetters(e.target[0].value)) {
+    // error 
+  } else {
     wordArr.forEach((item, i) => {
       if (wordArr[i] === e.target[0].value.toLowerCase()) {
         console.log(wordP.innerText)
         wordP.innerText = replaceAt(wordP.innerText, i, wordArr[i])
-    //    var replace = true
-      } else {
-          if (checkLetters(e.target[0].value) && replace === true) {
-            letters.innerText += e.target[0].value
-          }
+        replace = true
       }
     });
+    }
   }
 }
 
 //function to check the list of previous guesses
 function checkLetters(value) {
-  if (!function() {for (let i = 0; i < letters.innerText.length; i++) {
-    return letters.innerText[i] === value.toUpperCase
+  if (function() {for (let i = 0; i < letters.innerText.length; i++) {
+      return letters.innerText[i] === value.toUpperCase
     }}) {
-      return true
-  } else {
     return false
+  } else {
+    return true
   }
 }
 // utility function to change strings at a specific index, this is used a lot
