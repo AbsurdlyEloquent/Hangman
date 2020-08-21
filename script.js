@@ -70,13 +70,14 @@ function handler(e) {
 //function to check the list of previous guesses
 function checkLetters(value) {
   //if none of the letters in the string match, it returns false
-  let notContain = true
-  for (let i = 0; i < letters.innerText.length; i++) {
-    if (letters.innerText[i] === value) {
-      return false
+  let noContain = true
+  letters.innerText.split('').forEach((item, index)=>{
+    if (item === value) {
+      noContain = false
+      break;
     }
-    return notContain
-  }
+  })
+  return noContain
 }
 
 function checkWord() {
