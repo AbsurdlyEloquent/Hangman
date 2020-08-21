@@ -46,7 +46,7 @@ function handler(e) {
   retryLabel.display = 'none'
   // if the letter isn't in the letters array
   if (checkLetters(e.target[0].value)) {
-    // error function
+    retryLabel.style.display="inline"
   } else {
     wordArr.forEach((item, i) => {
       if (wordArr[i] === e.target[0].value.toLowerCase()) {
@@ -55,21 +55,18 @@ function handler(e) {
         replace = true
       }
     });
-      checkWord()
-      if (!replace) {
-        if (checkLetters(e.target[0].value)) {
+    if (checkLetters(e.target[0].value)) {
       letters.innerText += e.target[0].value
       score++
       retryLabel.style.display = "inline"
     } else {
 
     }
-      }
-    }
-    e.target[0].value = ""
-    replace = false
-    checkScore()
   }
+  e.target[0].value = ""
+  replace = false
+  checkScore()
+}
 
 //function to check the list of previous guesses
 function checkLetters(value) {
