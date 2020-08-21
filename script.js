@@ -40,10 +40,12 @@ function handler(e) {
         console.log(wordP.innerText)
         wordP.innerText = replaceAt(wordP.innerText, i, wordArr[i])
     //    var replace = true
+      } else {
+          if (checkLetters(e.target[0].value) && replace === true) {
+            letters.innerText += e.target[0].value
+          }
       }
     });
-  } if (checkLetters(e.target[0].value) && replace === true) {
-    letters.innerText += e.target[0].value
   }
 }
 
@@ -53,6 +55,8 @@ function checkLetters(value) {
     return letters.innerText[i] === value.toUpperCase
     }}) {
       return true
+  } else {
+    return false
   }
 }
 // utility function to change strings at a specific index, this is used a lot
