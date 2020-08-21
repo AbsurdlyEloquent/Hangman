@@ -5,19 +5,18 @@ let form = document.querySelector('form')
 let theme = document.querySelector('#theme')
 let img = document.querySelector('img')
 let retryLabel = document.querySelector('#badGuess')
-let query = document.querySelector("#query")
 let startBtn = document.querySelector('#startBtn')
 let startModal = document.querySelector('.wrapper')
 let winModal = document.querySelector('#winModal')
 let loseModal = document.querySelector('#loseModal')
 let wordArr = []
-let data = []
+let data = null
 let score = 0
 
 // Event listener to fetch word
-startBtn.addEventListener('click', fetchWords)
+startBtn.addEventListener('click', fetchWords, document.querySelector("#query"))
 //Random word fetched from api
-function fetchWords() {
+function fetchWords(query) {
   startModal.style.display = 'none'
   fetch(`https://api.datamuse.com/words?ml=${query.value}&max=1`)
     .then(response => response.json())
@@ -26,8 +25,7 @@ function fetchWords() {
         data = raw
         splitStr()
     } else {
-        query = prompt("That word returned no results!")
-        fetchWords()
+        fetchWords(prompt("That word returned no results!"))
     }})
     .catch(err => console.error(err));
 }
