@@ -2,12 +2,15 @@ let wordP = document.querySelector('#word')
 let letters = document.querySelector('#letters')
 let form = document.querySelector('form')
 let theme = document.querySelector('#theme')
+let img = document.querySelector('img')
+let retryLabel = document.querySelector('#badGuess')
+let query = document.querySelector(".startModal input")
 let wordArr = []
 let data = []
 let score = 0
 
+
 //Random word fetched from api
-let query = prompt('Enter a theme word')
 fetchWords()
 function fetchWords() {
   fetch(`https://api.datamuse.com/words?ml=${query}&max=4`)
@@ -36,6 +39,7 @@ let replace = false
 form.addEventListener('submit', handler)
 function handler(e) {
   e.preventDefault()
+  retryLabel.display = 'none'
   // if the letter isn't in the letters array
   if (checkLetters(e.target[0].value)) {
     // error function
@@ -49,8 +53,13 @@ function handler(e) {
     });
       checkWord()
       if (!replace) {
+        if (checkLetters(e.target[0].value)) {
       letters.innerText += e.target[0].value
       score++
+      retryLabel.style.display = "inline"
+    } else {
+
+    }
       }
     }
     e.target[0].value = ""
@@ -70,8 +79,15 @@ function checkLetters(value) {
 }
 
 function checkWord() {
-  if (wordP.innerText === data[0]) {
+  if (wordP.innerText === data[0].word) {
     winModal.style.display = "block"
+  }
+}
+
+function checkScore() {
+  img.src = `./assets/img${score}.png`
+  if (score >= 6) {
+    loseModal.style.display = "block"
   }
 }
 // utility function to change strings at a specific index, this is used a lot

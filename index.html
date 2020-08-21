@@ -9,19 +9,39 @@
   <body>
     <h1>Hangman</h1>
     <main>
-      <aside class="img"></aside>
+      <aside class="img">
+        <img src="./assets/img0.png" alt="">
+      </aside>
       <aside class="content">
         <p id="word"></p>
         <p id="theme">Words related to:</p>
         <form action="index.html" method="post">
           <label for="guess">Guess a letter:</label>
           <input id="guess" type="text" name="" value="">
-          <label for="guess" id="badGuess"></label>
+          <label for="guess" id="badGuess">That letter has already been tried!</label>
           <input type="submit" name="" value="Go">
         </form>
         <p id="letters"></p>
       </aside>
     </main>
-    <script src="script.js" charset="utf-8"></script>
+    <div class="wrapper">
+      <div id="startModal" class="modal">
+        <input type="text" name="" placeholder="Enter a theme word!">
+        <button type="button" id="startBtn">Start</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div id="winModal" class="modal">
+        <h3>You win!<br>Play again?</h3>
+        <button type="button" id="winBtn"></button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div id="loseModal" class="modal">
+        <h3>You lose!<br>Play again?</h3>
+        <button type="button" id="loseBtn"></button>
+      </div>
+    </div>
+    <script src=" script.js" charset=" utf-8" ="utf-8" "></script>
   </body>
 </html>

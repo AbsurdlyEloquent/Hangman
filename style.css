@@ -1,4 +1,10 @@
-main {
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} h1 {
+  text-align: center;
+} main {
   display: flex;
   justify-content: center;
 } .content {
@@ -7,4 +13,15 @@ main {
 } form {
   display: flex;
   flex-direction: column;
+} .wrapper {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: .4;
+  }.modal {
+  position: relative;
+  margin: auto;
 }
