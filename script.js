@@ -58,9 +58,10 @@ function handler(e) {
       }
     });
     if (!replace) {
-      if (!checkLetters(e.target[0].value)) {
+      if (checkLetters(e.target[0].value)) {
         letters.innerText += e.target[0].value
         score++
+      } else {
         retryLabel.style.display = "inline"
       }
     }
@@ -73,12 +74,12 @@ function handler(e) {
 //function to check the list of previous guesses
 function checkLetters(value) {
   //if none of the letters in the string match, it returns false
-  if (function() {for (let i = 0; i < letters.innerText.length; i++) {
-      return letters.innerText[i] === value.toUpperCase
-    }}) {
-    return false
-  } else {
-    return true
+  for (let i = 0; i < letters.innerText.length; i++) {
+    if (letters.innerText[i] === value) {
+      return false
+    } else {
+      return true
+    }
   }
 }
 
