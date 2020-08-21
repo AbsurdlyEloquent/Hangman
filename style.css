@@ -4,6 +4,8 @@ body {
   justify-content: center;
   overflow: hidden;
   margin: 0;
+  font-family: sans-serif;
+  background: #264653;
 } h1 {
   text-align: center;
 } main {
@@ -29,10 +31,16 @@ body {
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 50%;
-  width: 50%;
-  background-color: white;
+  height: 20%;
+  width: 20%;
+  background-color: #2a9d8f;
   border: 2px solid black;
+} .modal input {
+  border-radius: 10%;
+  font-size: 20px;
+  margin: 20px;
+} .modal button{
+    font-size: 20px;
 } #badGuess {
   display: none;
   color: red;
