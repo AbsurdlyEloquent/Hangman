@@ -8,6 +8,8 @@ let retryLabel = document.querySelector('#badGuess')
 let query = document.querySelector("#query")
 let startBtn = document.querySelector('#startBtn')
 let startModal = document.querySelector('.wrapper')
+let winModal = document.querySelector('#winModal')
+let loseModal = document.querySelector('#loseModal')
 let wordArr = []
 let data = []
 let score = 0
@@ -20,12 +22,10 @@ function fetchWords() {
   fetch(`https://api.datamuse.com/words?ml=${query.value}&max=1`)
     .then(response => response.json())
     .then(raw => {
-      console.log(raw)
       if (raw.length > 0) {
         data = raw
         splitStr()
     } else {
-        console.log(query)
         query = prompt("That word returned no results!")
         fetchWords()
     }})
@@ -33,7 +33,7 @@ function fetchWords() {
 }
 //splits the word into an array and displays hidden characters
 function splitStr() {
-  wordArr = data[0].word.split("")
+  wordArr = data[0].word.toUpperCase().split("")
   wordP.innerText = "_".repeat(wordArr.length)
   theme.innerText = theme.innerText + " " + query.value
 }
@@ -49,7 +49,7 @@ function handler(e) {
   if (!letters.includes(e.target[0].value.toUpperCase())) {
     //search for the letter in the array
     wordArr.forEach((item, i) => {
-      if (wordArr[i] === e.target[0].value.toLowerCase()) {
+      if (wordArr[i] === e.target[0].value.toUpperCase()) {
         console.log(wordP.innerText)
         wordP.innerText = replaceAt(wordP.innerText, i, wordArr[i])
         //the letter has been replaced at the specified index
@@ -60,26 +60,27 @@ function handler(e) {
       letters.push(e.target[0].value.toUpperCase())
       lettersP.innerText = letters
       score++
+      checkScore()
     }
   } else {
     retryLabel.style.display="inline"
   }
   e.target[0].value = ""
   replace = false
-  checkScore()
+  checkWord()
 }
 
 
 function checkWord() {
-  if (wordP.innerText === data[0].word) {
-    winModal.style.display = "block"
+  if (wordP.innerText === data[0].word.toUpperCase()) {
+    winModal.style.display = "flex"
   }
 }
 
 function checkScore() {
   img.src = `./assets/img${score}.png`
   if (score >= 6) {
-    loseModal.style.display = "block"
+    loseModal.style.display = "flex"
   }
 }
 // utility function to change strings at a specific index, this is used a lot

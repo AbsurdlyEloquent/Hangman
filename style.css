@@ -8,7 +8,7 @@ body {
   text-align: center;
 } main {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 } .content {
   display: flex;
   flex-direction: column;
@@ -21,11 +21,18 @@ body {
   height: 100%;
   width: 100%;
   z-index: 2;
-  background: black;
-  opacity: .6;
+  background: rgba(0,0,0,.6);
   }.modal {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: auto;
+  height: 50%;
+  width: 50%;
+  background-color: white;
+  border: 2px solid black;
 } #badGuess {
   display: none;
   color: red;
