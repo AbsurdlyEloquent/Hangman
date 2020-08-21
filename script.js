@@ -6,6 +6,7 @@ let img = document.querySelector('img')
 let retryLabel = document.querySelector('#badGuess')
 let query = document.querySelector("#query")
 let startBtn = document.querySelector('#startBtn')
+let startModal = document.querySelector('.wrapper')
 let wordArr = []
 let data = []
 let score = 0
@@ -14,6 +15,7 @@ let score = 0
 startBtn.addEventListener('click', fetchWords)
 //Random word fetched from api
 function fetchWords() {
+  startModal.style.display = 'none'
   fetch(`https://api.datamuse.com/words?ml=${query.value}&max=1`)
     .then(response => response.json())
     .then(raw => {
