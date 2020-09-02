@@ -9,7 +9,7 @@ The logic of the game is fairly straightforward. The word is split into an array
 
 There are several modals that are only visible at certain times, the Start Modal, Win Modal and Lose Modal, They each denote game states.
 
-When a letter is guessed wrong AND it hasn't been guessed before, the image to the right switches out for a new one showing a more complete 'hangman'
+When a letter is guessed wrong AND it hasn't been guessed before, the image to the right switches out for a new one showing a more complete 'hangman'.
 I actually couldn't find a suitable set of images so I drew these myself in Gimp.
 
 
